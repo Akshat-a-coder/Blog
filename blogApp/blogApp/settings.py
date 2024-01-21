@@ -12,13 +12,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import dj_database_url
-from dotenv import load_dotenv
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CLEARDB_URL = os.getenv('CLEARDB_DATABASE_URL')
-load_dotenv()
 
 
 
@@ -84,7 +81,9 @@ WSGI_APPLICATION = 'blogApp.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=CLEARDB_URL)
+    'default': dj_database_url.config(
+        default=os.environ.get('CLEARDB_DATABASE_URL')
+    )
 }
 
 
