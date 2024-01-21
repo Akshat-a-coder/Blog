@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'blogApp.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('CLEARDB_DATABASE_URL')
+        default=os.environ.get('DATABASE_URL_MAIN')
     )
 }
 
